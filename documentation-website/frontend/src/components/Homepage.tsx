@@ -63,6 +63,13 @@ const Homepage = () => {
           >
             Go to Playground
           </Link>
+          <Link
+            to="/apikey"
+            className="enhanced-primary-button px-6 py-3 text-white rounded-lg font-medium text-sm min-w-40 inter-font ml-4"
+          >
+            Create API Key
+          </Link>
+          
 
           <div className="mb-16"></div>         
 

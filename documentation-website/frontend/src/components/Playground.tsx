@@ -123,7 +123,7 @@ const Playground = () => {
             : "fixed bottom-4 left-0 right-0"
         }`}
       >
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
+        {/* <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
           <div className="relative w-full sm:w-auto">
             <select
               value={selectedUtility}
@@ -163,7 +163,51 @@ const Playground = () => {
               />
             </label>
           )}
-        </div>
+        </div> */}
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
+            {selectedUtility === "Article" ? (
+                <div className="flex w-full">
+                <input
+                    type="text"
+                    className="flex-1 px-4 py-2 rounded-l-md inter-font bg-black/50 text-white border border-white/20"
+                    placeholder="Paste article URL..."
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <button onClick={handleSubmit} className="enhanced-primary-button px-4 rounded-r-md">
+                    📨
+                </button>
+                </div>
+            ) : (
+                <div className="flex items-center justify-center gap-4">
+                <div className="relative">
+                    <select
+                    value={selectedUtility}
+                    onChange={(e) => setSelectedUtility(e.target.value)}
+                    className="glass-card bg-black/40 text-white border border-white/20 px-4 py-2 rounded-md text-sm appearance-none pr-10"
+                    >
+                    <option value="Article">📰 Article</option>
+                    <option value="Image">📷 Image</option>
+                    <option value="Video">🎥 Video</option>
+                    </select>
+                    <div className="pointer-events-none absolute right-4 top-1/2 transform -translate-y-1/2 text-white">
+                    ▼
+                    </div>
+                </div>
+
+                <label className="enhanced-primary-button px-6 py-2 text-white rounded-lg cursor-pointer">
+                    Upload {selectedUtility}
+                    <input
+                    type="file"
+                    accept={selectedUtility === "Image" ? "image/*" : "video/*"}
+                    className="hidden"
+                    onChange={handleFileUpload}
+                    />
+                </label>
+                </div>
+            )}
+            </div>
+
       </div>
     </div>
   );
